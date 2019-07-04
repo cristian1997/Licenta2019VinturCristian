@@ -10,7 +10,7 @@ def read_file(filename, num_of_classes):
 			v = list(map(float, line.split()))
 			y = [0] * (num_of_classes - 1)
 			
-			v[-1] -= 1 # for satimage
+			# v[-1] -= 1 # for satimage
 			
 			# assumes classes are numbered 0, 1, ..., num_of_classes - 1
 			if v[-1] < num_of_classes - 1:
@@ -41,7 +41,7 @@ def get_accuracy(test_x, test_y, w, num_of_classes):
 	for i in range(test_x.shape[0]):
 		if predict(test_x[i], w, num_of_classes) == np.argmax(test_y[i]):
 			correct += 1
-
+	
 	return correct / test_x.shape[0] * 100
 
 def train(train_x, train_y, num_of_classes, nr_iterations = 10, test_x = None, test_y = None, test_error_file = None):
@@ -94,7 +94,7 @@ def train(train_x, train_y, num_of_classes, nr_iterations = 10, test_x = None, t
 
 dataset_name = sys.argv[1]
 nr_iterations = int(sys.argv[2])
-num_of_classes = 7
+num_of_classes = 26
 
 test_error_file = open("out/" + dataset_name + "/" + str(nr_iterations) + "-testerrorplot.txt", "w")
 
@@ -104,3 +104,16 @@ test_x, test_y = read_file("../datasets/" + dataset_name + "/test.txt", num_of_c
 # print(test_x.shape)
 w = train(train_x, train_y, num_of_classes = num_of_classes, test_x = test_x, test_y = test_y,
 	nr_iterations = nr_iterations, test_error_file = test_error_file)
+
+
+# num_of_features = train_x[0].shape[1]
+
+# wm = []
+# for i in range(num_of_classes - 1):
+# 	wm.append(list(map(lambda x : x.sum(), w[i * num_of_features : (i + 1) * num_of_features])))
+# 	print(" ".join(map(lambda x : str(x.sum()), w[i * num_of_features : (i + 1) * num_of_features])))
+
+# wm = np.asmatrix(wm)
+
+# print("******************")
+# print(np.max(wm, axis = 0))

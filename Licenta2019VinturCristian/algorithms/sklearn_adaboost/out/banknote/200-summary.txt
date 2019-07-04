@@ -1,0 +1,8 @@
+Dataset name: banknote
+Number of iterations: 200
+Loss function: exponential
+Train set size: 931
+Train error: 0.0
+Test set size: 441
+Test error: 0.0
+Training duration: 0.20856738090515137

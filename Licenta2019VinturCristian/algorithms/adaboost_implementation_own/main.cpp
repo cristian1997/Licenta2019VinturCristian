@@ -181,8 +181,8 @@ vector<vector<double>> readFile(string filename) {
 		int cnt = 0;
 		while(iss >> x) v.push_back(x), ++cnt;
 		
-		// v.back() = (v.back() <= 0.5 ? -1 : 1); // for banknote
-		v.back() = (v.back() <= 1.5 ? -1 : 1); // for satimage
+		v.back() = (v.back() <= 0.5 ? -1 : 1); // for banknote
+		// v.back() = (v.back() <= 1.5 ? -1 : 1); // for satimage
 		// v.back() = (v.back() <= 5.5 ? -1 : 1); // for mnist
 		
 		data.push_back(v);

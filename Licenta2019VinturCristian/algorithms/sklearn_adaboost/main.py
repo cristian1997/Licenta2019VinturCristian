@@ -3,6 +3,7 @@ import time
 import numpy as np
 
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 def read_file(filename):
 	with open(filename) as f:
@@ -25,7 +26,7 @@ nr_iterations = int(sys.argv[2])
 train_x, train_y = read_file("../datasets/" + dataset_name + "/train.txt")
 test_x, test_y = read_file("../datasets/" + dataset_name + "/test.txt")
 
-clf = AdaBoostClassifier(n_estimators = nr_iterations, algorithm = 'SAMME')
+clf = AdaBoostClassifier(n_estimators = nr_iterations, algorithm = 'SAMME', base_estimator = DecisionTreeClassifier(max_depth = 1))
 
 train_time_start = time.time()
 clf.fit(train_x, train_y)
